@@ -49,7 +49,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_transparent_30%),linear-gradient(180deg,_#f8fafc_0%,_#ffffff_42%,_#eff6ff_100%)] text-slate-900">
+    <main className="min-h-screen overflow-x-clip bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_transparent_30%),linear-gradient(180deg,_#f8fafc_0%,_#ffffff_42%,_#eff6ff_100%)] text-slate-900">
       <Navbar activeSection={activeSection} scrolled={scrolled} />
       <Hero />
       <About active={activeSection === "about"} />
