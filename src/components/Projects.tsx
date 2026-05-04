@@ -1,7 +1,11 @@
 import ProjectCard from "./ProjectCard";
 import useSectionReveal from "../hooks/useSectionReveal";
 
-export default function Projects() {
+type ProjectsProps = {
+    active: boolean;
+};
+
+export default function Projects({ active }: ProjectsProps) {
     const { ref, visible } = useSectionReveal<HTMLDivElement>();
     const projects = [
         {
@@ -35,7 +39,7 @@ export default function Projects() {
 
             <div
                 ref={ref}
-                className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+                className={`section-focus reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""} ${active ? "is-current" : ""}`}
             >
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
                     <div className="max-w-2xl">

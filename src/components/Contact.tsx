@@ -1,6 +1,10 @@
 import useSectionReveal from "../hooks/useSectionReveal";
 
-export default function Contact() {
+type ContactProps = {
+    active: boolean;
+};
+
+export default function Contact({ active }: ContactProps) {
     const { ref, visible } = useSectionReveal<HTMLDivElement>();
 
     return (
@@ -12,7 +16,7 @@ export default function Contact() {
 
                 <div
                     ref={ref}
-                    className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+                    className={`section-focus reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""} ${active ? "is-current" : ""}`}
                 >
                     <div className="grid gap-10 md:grid-cols-2 md:items-center">
                         {/* Left */}

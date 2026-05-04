@@ -1,6 +1,10 @@
 import useSectionReveal from "../hooks/useSectionReveal";
 
-export default function Skills() {
+type SkillsProps = {
+  active: boolean;
+};
+
+export default function Skills({ active }: SkillsProps) {
   const { ref, visible } = useSectionReveal<HTMLDivElement>();
   const skillGroups = [
     {
@@ -41,7 +45,7 @@ return (
 
         <div
             ref={ref}
-            className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+            className={`section-focus reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""} ${active ? "is-current" : ""}`}
         >
             <div className="max-w-2xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-600">
