@@ -1,4 +1,5 @@
-const profile = new URL('../assets/profile.png', import.meta.url).href;
+import profile from "../assets/profile-optimized.jpg";
+
 export default function Hero() {
     return (
         <>

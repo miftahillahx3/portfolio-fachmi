@@ -1,36 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import useSectionReveal from "../hooks/useSectionReveal";
 
 export default function About() {
-    const ref = useRef<HTMLDivElement>(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                }
-            },
-            { threshold: 0.2 }
-        );
-
-        if (ref.current) observer.observe(ref.current);
-
-        return () => {
-            if (ref.current) observer.unobserve(ref.current);
-        };
-    }, []);
+    const { ref, visible } = useSectionReveal<HTMLDivElement>();
 
     return (
-        <section id="about" className="relative overflow-hidden bg-slate-50/80 py-24">
+        <section id="about" className="section-shell relative overflow-hidden bg-slate-50/80 py-24">
             {/* background blur */}
             <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-blue-200/60 blur-3xl"></div>
             <div className="pointer-events-none absolute right-0 bottom-0 h-96 w-96 rounded-full bg-cyan-200/50 blur-3xl"></div>
 
             <div
                 ref={ref}
-                className={`mx-auto max-w-6xl px-6 transition-all duration-1000 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                    }`}
+                className={`reveal-block mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
             >
                 <div className="grid gap-14 md:grid-cols-2 md:items-center">
                     {/* LEFT */}

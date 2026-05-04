@@ -1,4 +1,7 @@
+import useSectionReveal from "../hooks/useSectionReveal";
+
 export default function Skills() {
+  const { ref, visible } = useSectionReveal<HTMLDivElement>();
   const skillGroups = [
     {
       title: "Frontend",
@@ -32,11 +35,14 @@ export default function Skills() {
 return (
     <>
         {/* Skills */}
-        <section id="skills" className="relative bg-gradient-to-b from-slate-50 to-white py-24">
+        <section id="skills" className="section-shell relative bg-gradient-to-b from-slate-50 to-white py-24">
         <div className="absolute left-0 top-10 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl"></div>
         <div className="absolute right-0 bottom-10 h-72 w-72 rounded-full bg-cyan-200/40 blur-3xl"></div>
 
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div
+            ref={ref}
+            className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+        >
             <div className="max-w-2xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-600">
                     Skills
@@ -53,10 +59,11 @@ return (
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-                {skillGroups.map((group) => (
+                {skillGroups.map((group, index) => (
                     <div
                         key={group.title}
-                        className="group rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-xl"
+                        className={`reveal-card group rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur hover:-translate-y-2 hover:border-blue-300 hover:shadow-xl ${visible ? "is-visible" : ""}`}
+                        style={{ transitionDelay: `${index * 120}ms` }}
                     >
                         <div className="mb-6 flex items-center gap-4">
                             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl transition group-hover:scale-110">

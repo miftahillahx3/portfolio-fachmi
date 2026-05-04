@@ -1,12 +1,19 @@
+import useSectionReveal from "../hooks/useSectionReveal";
+
 export default function Contact() {
+    const { ref, visible } = useSectionReveal<HTMLDivElement>();
+
     return (
         <>
             {/* Contact */}
-            <section id="contact" className="relative overflow-hidden bg-slate-950 py-24 text-white">
+            <section id="contact" className="section-shell relative overflow-hidden bg-slate-950 py-24 text-white">
                 <div className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl"></div>
                 <div className="absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-teal-400/20 blur-3xl"></div>
 
-                <div className="relative mx-auto max-w-6xl px-6">
+                <div
+                    ref={ref}
+                    className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+                >
                     <div className="grid gap-10 md:grid-cols-2 md:items-center">
                         {/* Left */}
                         <div>
@@ -25,7 +32,10 @@ export default function Contact() {
                         </div>
 
                         {/* Right */}
-                        <div className="rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur">
+                        <div
+                            className={`reveal-card rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur ${visible ? "is-visible" : ""}`}
+                            style={{ transitionDelay: "140ms" }}
+                        >
                             <h3 className="text-2xl font-black">Get in touch</h3>
 
                             <div className="mt-6 space-y-4">

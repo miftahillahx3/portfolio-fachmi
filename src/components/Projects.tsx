@@ -1,6 +1,8 @@
 import ProjectCard from "./ProjectCard";
+import useSectionReveal from "../hooks/useSectionReveal";
 
 export default function Projects() {
+    const { ref, visible } = useSectionReveal<HTMLDivElement>();
     const projects = [
         {
             title: "SIRENE Jabar",
@@ -27,11 +29,14 @@ export default function Projects() {
 
 
     return (
-        <section id="projects" className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-24">
+        <section id="projects" className="section-shell relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-24">
             <div className="absolute -right-40 top-20 h-96 w-96 rounded-full bg-blue-200/50 blur-3xl"></div>
             <div className="absolute -left-40 bottom-20 h-96 w-96 rounded-full bg-cyan-200/40 blur-3xl"></div>
 
-            <div className="relative mx-auto max-w-6xl px-6">
+            <div
+                ref={ref}
+                className={`reveal-block relative mx-auto max-w-6xl px-6 ${visible ? "is-visible" : ""}`}
+            >
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
                     <div className="max-w-2xl">
                         <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-600">
@@ -56,7 +61,13 @@ export default function Projects() {
 
                 <div className="mt-12 grid gap-6 md:grid-cols-3">
                     {projects.map((project, index) => (
-                        <ProjectCard key={project.title} index={index + 1} {...project} />
+                        <div
+                            key={project.title}
+                            className={`reveal-card ${visible ? "is-visible" : ""}`}
+                            style={{ transitionDelay: `${index * 140}ms` }}
+                        >
+                            <ProjectCard index={index + 1} {...project} />
+                        </div>
                     ))}
                 </div>
             </div>
