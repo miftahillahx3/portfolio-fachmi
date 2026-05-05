@@ -54,7 +54,7 @@ export default function Contact({ active }: ContactProps) {
                                 </a>
 
                                 <a
-                                    href="https://www.linkedin.com/"
+                                    href="https://www.linkedin.com/in/miftahillahx3/"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900 px-5 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-slate-800"
@@ -64,7 +64,7 @@ export default function Contact({ active }: ContactProps) {
                                 </a>
 
                                 <a
-                                    href="https://github.com/"
+                                    href="https://github.com/miftahillahx3"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900 px-5 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-slate-800"
