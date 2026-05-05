@@ -23,7 +23,7 @@ export default function Contact({ active }: ContactProps) {
                     <div className="grid gap-10 md:grid-cols-2 md:items-center">
                         <div>
                             <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-400">
-                                Contact
+                                Hire Me
                             </p>
 
                             <h2 className="max-w-[10ch] text-3xl font-black leading-tight sm:text-4xl md:text-5xl">

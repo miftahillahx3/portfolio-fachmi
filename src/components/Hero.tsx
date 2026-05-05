@@ -11,30 +11,28 @@ export default function Hero() {
                 <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-6xl items-center gap-14 px-6 py-20 md:grid-cols-2">
                     {/* Left */}
                     <div className="slide-up">
-                        <div className="mb-5 inline-flex rounded-full bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+                        {/* <div className="mb-5 inline-flex rounded-full bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
                             Fullstack Engineer
-                        </div>
+                        </div> */}
                         <h2 className="max-w-2xl text-5xl font-black leading-[1.05] tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
-                            Building scalable web systems for healthcare.
+                            Fullstack Engineer.
                         </h2>
                         <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600">
-                            Saya mengembangkan sistem informasi berbasis web, mulai dari frontend,
-                            backend, database, hingga integrasi dengan perangkat laboratorium dan
-                            layanan digital.
+                            Building scalable, integrated web platforms for labs & digital services. Specialized in frontend, backend, database, and API integration.
                         </p>
                         <div className="mt-9 flex flex-wrap gap-4">
                             <a
                                 href="#projects"
                                 className="rounded-2xl bg-blue-600 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl active:scale-95"
                             >
-                                View Projects
+                                Explore Projects
                             </a>
 
                             <a
                                 href="#contact"
-                                className="rounded-2xl border border-slate-200 bg-white px-7 py-4 text-sm font-bold text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:text-blue-600 hover:shadow-lg active:scale-95"
+                                className="rounded-2xl border border-slate-950 bg-slate-950 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-slate-300 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-600 hover:border-blue-600 hover:shadow-xl hover:shadow-blue-200 active:scale-95"
                             >
-                                Contact
+                                Hire Me
                             </a>
                         </div>
                     </div>
@@ -52,8 +50,9 @@ export default function Hero() {
                                 <div className="absolute -left-20 bottom-10 h-40 w-40 rounded-full bg-cyan-400/10"></div>
 
                                 {/* top badge */}
-                                <div className="absolute right-5 top-5 z-20 rounded-full bg-slate-950 px-4 py-2 text-xs font-black text-white shadow-lg">
-                                    Fullstack Engineer
+                                <div className="absolute right-1 top-5 z-20 inline-flex items-center gap-3 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10">
+                                    <span className="inline-flex h-3.5 w-3.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(74,222,128,0.85)]"></span>
+                                    <p className="leading-none">Open for remote &amp; opportunities</p>
                                 </div>
 
                                 {/* image frame */}
@@ -72,7 +71,7 @@ export default function Hero() {
                                     Focus Area
                                 </p>
                                 <p className="mt-1 text-sm font-black text-slate-900">
-                                    Fullstack Engineer | API & System Integration
+                                    React, TypeScript, Tailwind CSS, Node.js, Express, PostgreSQL & API Integration
                                 </p>
                             </div>
                             {/* small floating stats */}

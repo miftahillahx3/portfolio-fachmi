@@ -6,6 +6,12 @@ type NavbarProps = {
 };
 
 const menus = ["about", "skills", "projects", "contact"];
+const menuLabels: Record<string, string> = {
+    about: "About",
+    skills: "Skills",
+    projects: "Projects",
+    contact: "Hire Me",
+};
 
 export default function Navbar({ activeSection, scrolled }: NavbarProps) {
     const [open, setOpen] = useState(false);
@@ -120,7 +126,7 @@ export default function Navbar({ activeSection, scrolled }: NavbarProps) {
                                     } ${isPressed ? "scale-95" : "scale-100"}`}
                             >
                                 <span className="relative">
-                                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                                    {menuLabels[item] ?? item}
                                 </span>
                             </a>
                         );
@@ -156,7 +162,7 @@ export default function Navbar({ activeSection, scrolled }: NavbarProps) {
                                     } ${isPressed ? "scale-[0.98]" : "scale-100"}`}
                                 style={{ transitionDelay: `${index * 40}ms` }}
                             >
-                                {item.charAt(0).toUpperCase() + item.slice(1)}
+                                {menuLabels[item] ?? item}
                             </a>
                         );
                     })}

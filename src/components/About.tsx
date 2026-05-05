@@ -23,22 +23,15 @@ export default function About({ active }: AboutProps) {
                         <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-blue-600">
                             About Me
                         </p>
-
                         <h2 className="text-4xl font-black leading-tight text-slate-900 md:text-5xl">
                             Building systems that solve real-world problems.
                         </h2>
-
                         <p className="mt-6 leading-8 text-slate-600">
-                            Saya adalah Fullstack Engineer yang berfokus pada pengembangan
-                            sistem informasi terintegrasi, khususnya untuk layanan kesehatan
-                            dan administrasi publik.
+                            I am a Fullstack Engineer specializing in building integrated information systems for healthcare and public services.
                         </p>
-
                         <p className="mt-4 leading-8 text-slate-600">
-                            Saya terbiasa membangun aplikasi end-to-end, termasuk dashboard,
-                            manajemen data, REST API, database, dan integrasi sistem eksternal.
+                            I develop end-to-end applications, including dashboards, data management systems, REST APIs, databases, and integrations with external systems.
                         </p>
-
                         {/* highlight badge */}
                         <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-blue-50 px-5 py-2 text-sm font-semibold text-blue-600 shadow-sm">
                             🚀 3+ Production Systems Built
@@ -51,7 +44,6 @@ export default function About({ active }: AboutProps) {
                             <h3 className="text-lg font-black text-slate-900">
                                 What I Do
                             </h3>
-
                             <ul className="mt-6 space-y-4 text-sm text-slate-600">
                                 {[
                                     "Web Application Development",
@@ -63,8 +55,8 @@ export default function About({ active }: AboutProps) {
                                     <li
                                         key={item}
                                         className={`flex items-center gap-3 transition-all duration-700 ${visible
-                                                ? "translate-x-0 opacity-100"
-                                                : "translate-x-6 opacity-0"
+                                            ? "translate-x-0 opacity-100"
+                                            : "translate-x-6 opacity-0"
                                             }`}
                                         style={{ transitionDelay: `${index * 120}ms` }}
                                     >
