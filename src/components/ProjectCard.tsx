@@ -191,7 +191,7 @@ export default function ProjectCard({
         <div className="flex flex-col justify-between rounded-t-[2rem] border border-slate-200/80 bg-white/88 p-6 text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm sm:p-7 lg:rounded-l-[2rem] lg:rounded-tr-none lg:border-r-0 lg:p-8">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-blue-600">Featured Project</p>
-            <h3 className="mt-3 max-w-[12ch] text-3xl font-black leading-tight text-slate-950 sm:text-[2.1rem] lg:text-[2.35rem]">{title}</h3>
+            <h3 className="mt-3 max-w-[18ch] text-[2.15rem] font-black leading-tight text-slate-950 sm:max-w-[14ch] sm:text-[2.1rem] lg:max-w-[12ch] lg:text-[2.35rem]">{title}</h3>
             {category ? (
               <span className="mt-4 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-blue-700">
                 {category}

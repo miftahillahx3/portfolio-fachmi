@@ -41,7 +41,7 @@ export default function Hero() {
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/10" />
               <div className="absolute -left-20 bottom-10 h-40 w-40 rounded-full bg-cyan-400/10" />
 
-              <div className="absolute left-1/2 top-4 z-20 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-slate-950/95 px-3 py-2 text-[11px] font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10 sm:left-auto sm:right-1 sm:top-5 sm:translate-x-0 sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
+              <div className="absolute right-3 top-4 z-20 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-slate-950/95 px-3 py-2 text-[10px] font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10 sm:right-1 sm:top-5 sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
                 <span className="inline-flex h-3 w-3 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(74,222,128,0.85)] sm:h-3.5 sm:w-3.5" />
                 <p className="leading-none italic">Open for remote &amp; opportunities</p>
               </div>
