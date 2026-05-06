@@ -11,22 +11,22 @@ export default function Projects({ active }: ProjectsProps) {
         {
             title: "SIRENE Jabar",
             description:
-                "Neonatal Referral & Evaluation Information System (SIRENE Jabar), an integrated neonatal screening information system used across healthcare facilities in West Java, featuring real-time data processing and direct integration with laboratory devices to automate result reporting and improve accuracy.",
-            tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API", "PostgreSQL", "Websocket", "CI/CD"],
+                "An integrated neonatal screening information system used across healthcare facilities in West Java, featuring real-time data processing and direct integration with laboratory devices to automate result reporting and improve accuracy.",
+            tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API", "PostgreSQL", "Websocket", "Role-based Access Control"],
             link: "https://sirene.labkesjabar.com/",
         },
-        {
-            title: "LIS Real-time Patient Dashboard",
+        { 
+            title: "Real-time Patient Dashboard",
             description:
-                "Dashboard display informasi layanan laboratorium secara real-time, menampilkan data pasien, daftar pemeriksaan, biaya, QR survei, tarif, dan hotline.",
-            tech: ["Dashboard", "Real-time Data", "QR Integration", "Responsive UI"],
+                "Real-time web dashboard for a Laboratory Information System (LIS) displaying live patient and examination registration with integration the LIS backend to provide instant visibility into lab operations and patient flow.",
+            tech: ["Next.js", "TypeScript", "REST API", "Server-sent Events", "Tailwind CSS", "Geolocation"],
             link: "https://displayinfo.labkesjabar.com/?draft_key=1",
         },
         {
             title: "SIMPEG Labkes Jabar",
             description:
-                "Sistem informasi manajemen kepegawaian untuk mengelola data pegawai, pendidikan, pekerjaan, sertifikasi, dan administrasi SDM secara digital.",
-            tech: ["Web App", "Database", "Authentication", "Employee Management"],
+                "A web-based Employee Management Information System (SIMPEG) for Labkes Jabar to streamline personnel data management, including employee profiles, education history, work experience, certifications, and administrative services.",
+            tech: ["PHP", "CodeIgniter", "MySQL", "Authentication System", "Role-based Access Control"],
             link: "https://simpeglabkes-jabar.com/",
         },
     ];

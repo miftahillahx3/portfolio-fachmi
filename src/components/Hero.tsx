@@ -52,7 +52,7 @@ export default function Hero() {
                                 {/* top badge */}
                                 <div className="absolute right-1 top-5 z-20 inline-flex items-center gap-3 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10">
                                     <span className="inline-flex h-3.5 w-3.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(74,222,128,0.85)]"></span>
-                                    <p className="leading-none">Open for remote &amp; opportunities</p>
+                                    <p className="leading-none italic">Open for remote &amp; opportunities</p>
                                 </div>
 
                                 {/* image frame */}
