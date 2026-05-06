@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import useSectionReveal from "../hooks/useSectionReveal";
 import { projects } from "../data/projects";
@@ -8,6 +9,50 @@ type ProjectsProps = {
 
 export default function Projects({ active }: ProjectsProps) {
   const { ref, visible } = useSectionReveal<HTMLDivElement>();
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const slides = Array.from(slider.children) as HTMLElement[];
+    if (!slides.length) return;
+
+    const interval = window.setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      slider.scrollTo({
+        left: slides[nextIndex].offsetLeft,
+        behavior: "smooth",
+      });
+      setCurrentIndex(nextIndex);
+    }, 4500);
+
+    return () => window.clearInterval(interval);
+  }, [currentIndex]);
+
+  const handleScroll = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const slides = Array.from(slider.children) as HTMLElement[];
+    if (!slides.length) return;
+
+    let closestIndex = 0;
+    let smallestDistance = Number.POSITIVE_INFINITY;
+
+    slides.forEach((slide, index) => {
+      const distance = Math.abs(slide.offsetLeft - slider.scrollLeft);
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== currentIndex) {
+      setCurrentIndex(closestIndex);
+    }
+  };
 
   return (
     <section id="projects" className="section-shell relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-12 sm:py-16">
@@ -40,15 +85,39 @@ export default function Projects({ active }: ProjectsProps) {
           </div>
         </div>
 
-        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 no-scrollbar sm:-mx-6 sm:px-6 md:mx-0 md:grid md:overflow-visible md:px-0 md:pb-0">
+        <div
+          ref={sliderRef}
+          onScroll={handleScroll}
+          className="-mx-4 mt-12 flex snap-x snap-mandatory overflow-x-auto px-4 pb-2 no-scrollbar sm:-mx-6 sm:px-6 md:mx-0 md:px-0"
+        >
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`reveal-card w-[88%] max-w-[24rem] shrink-0 snap-start md:w-auto md:max-w-none ${visible ? "is-visible" : ""}`}
+              className={`reveal-card mr-4 w-[calc(100%-1rem)] shrink-0 snap-center last:mr-0 md:mr-6 md:w-full ${visible ? "is-visible" : ""}`}
               style={{ transitionDelay: `${index * 140}ms` }}
             >
               <ProjectCard {...project} />
             </div>
+          ))}
+        </div>
+
+        <div className="mt-5 flex justify-center gap-2">
+          {projects.map((project, index) => (
+            <button
+              key={project.title}
+              type="button"
+              onClick={() => {
+                const slider = sliderRef.current;
+                const slide = slider?.children[index] as HTMLElement | undefined;
+                if (!slider || !slide) return;
+                slider.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+                setCurrentIndex(index);
+              }}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                currentIndex === index ? "w-8 bg-blue-600" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+              }`}
+              aria-label={`Go to ${project.title}`}
+            />
           ))}
         </div>
       </div>

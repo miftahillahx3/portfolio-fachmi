@@ -108,7 +108,7 @@ function TechChip({ name }: { name: string }) {
     .toUpperCase();
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-2.5 py-2 text-[11px] font-semibold text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-[11px] font-semibold text-slate-700 shadow-sm">
       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-50 ring-1 ring-slate-200">
         {icon ?? <span className="text-[10px] font-black text-slate-600">{fallback}</span>}
       </span>
@@ -126,7 +126,7 @@ export default function ProjectCard({
   image,
 }: ProjectCardProps) {
   const [imageError, setImageError] = React.useState(false);
-  const [mobileActionVisible, setMobileActionVisible] = React.useState(false);
+  const [mobileOverlayVisible, setMobileOverlayVisible] = React.useState(false);
 
   const categoryMap: Record<string, string> = {
     React: "Frontend",
@@ -152,14 +152,12 @@ export default function ProjectCard({
   const features = tech.filter((item) => categoryMap[item] === "Features");
   const other = tech.filter((item) => !categoryMap[item]);
 
-  function Group({ title, items }: { title: string; items: string[] }) {
+  function StackGroup({ title, items }: { title: string; items: string[] }) {
     if (!items.length) return null;
 
     return (
-      <div className="grid gap-2 md:grid-cols-[86px_minmax(0,1fr)] md:items-start">
-        <div className="pt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">
-          {title}
-        </div>
+      <div className="space-y-2.5">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">{title}</p>
         <div className="flex flex-wrap gap-2">
           {items.map((name) => (
             <TechChip key={name} name={name} />
@@ -169,130 +167,103 @@ export default function ProjectCard({
     );
   }
 
-  function ActionButton() {
+  function PreviewFallback() {
     return (
-      <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2.5 text-sm font-bold text-white shadow-[0_18px_40px_rgba(15,23,42,0.24)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20 sm:px-5 sm:py-3"
-      >
-        Live Demo
-        <span className="text-base">→</span>
-      </a>
+      <div className="relative flex h-full min-h-[260px] overflow-hidden rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.36),_transparent_42%),linear-gradient(145deg,_#020617,_#0f172a_35%,_#1d4ed8_78%,_#67e8f9)] p-6 text-white">
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:26px_26px]" />
+        <div className="relative z-10 mt-auto max-w-[15rem]">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-100/80">Preview</p>
+          <h3 className="mt-2 text-2xl font-black leading-tight">{title}</h3>
+        </div>
+      </div>
     );
   }
 
-  const handlePreviewToggle = () => {
+  const handleMediaToggle = () => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {
-      setMobileActionVisible((current) => !current);
+      setMobileOverlayVisible((current) => !current);
     }
   };
 
-  const mobileOverlayClass = mobileActionVisible ? "opacity-100" : "opacity-0 pointer-events-none";
-
-  function PreviewPanel() {
-    return (
-      <div
-        className="relative flex h-56 w-full cursor-pointer flex-col justify-between overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.42),_transparent_42%),linear-gradient(145deg,_#020617,_#0f172a_35%,_#1d4ed8_78%,_#67e8f9)] p-5 text-white sm:h-64 sm:cursor-default sm:p-6"
-        onClick={handlePreviewToggle}
-      >
-        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:26px_26px]" />
-        <div className="absolute -right-12 bottom-6 h-28 w-28 rounded-full border border-white/15 bg-white/10 blur-sm" />
-
-        <div className="relative flex items-center justify-end">
-          {category ? (
-            <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-blue-50 backdrop-blur">
-              {category}
-            </span>
-          ) : null}
-        </div>
-
-        <div className="relative max-w-[90%] sm:max-w-[82%]">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-100/80">
-            Featured Build
-          </p>
-          <h3 className="mt-2 text-[1.55rem] font-black leading-tight text-white sm:text-[1.75rem]">
-            {title}
-          </h3>
-          {category ? (
-            <span className="mt-3 inline-flex rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/90 backdrop-blur">
-              {category}
-            </span>
-          ) : null}
-          <p className="mt-3 max-w-xs text-sm leading-6 text-blue-50/85">
-            Production-ready web system with a clear operational role and focused user flow.
-          </p>
-        </div>
-
-        <div className={`absolute inset-0 bg-slate-950/15 transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileActionVisible ? "opacity-100" : "opacity-0"}`} />
-        <div className={`absolute inset-0 flex items-center justify-center transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileOverlayClass}`}>
-          <ActionButton />
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/70 bg-gradient-to-br from-white via-slate-50 to-blue-50/40 shadow-[0_24px_80px_rgba(15,23,42,0.08)] ring-1 ring-slate-200/70 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_28px_90px_rgba(37,99,235,0.14)]">
-      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
+    <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-transparent shadow-none">
+      <div className="grid gap-0 lg:grid-cols-[minmax(0,0.78fr)_minmax(380px,1.12fr)]">
+        <div className="flex flex-col justify-between rounded-t-[2rem] border border-slate-200/80 bg-white/88 p-6 text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm sm:p-7 lg:rounded-l-[2rem] lg:rounded-tr-none lg:border-r-0 lg:p-8">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-blue-600">Featured Project</p>
+            <h3 className="mt-3 max-w-[12ch] text-3xl font-black leading-tight text-slate-950 sm:text-[2.1rem] lg:text-[2.35rem]">{title}</h3>
+            {category ? (
+              <span className="mt-4 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-blue-700">
+                {category}
+              </span>
+            ) : null}
+            <p className="mt-5 max-w-[34rem] text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">{description}</p>
+          </div>
 
-      <div className="relative overflow-hidden border-b border-slate-200/70 bg-slate-100">
-        {image && !imageError ? (
-          <div
-            className="relative h-56 w-full cursor-pointer overflow-hidden sm:h-64 sm:cursor-default"
-            onClick={handlePreviewToggle}
-          >
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-              onError={() => setImageError(true)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-white/10" />
-            <div className={`absolute inset-0 bg-slate-950/15 transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileActionVisible ? "opacity-100" : "opacity-0"}`} />
+          <div className="mt-6 flex items-center gap-3 lg:mt-8">
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.65)]" />
+            <p className="text-sm font-semibold text-slate-500">
+              Tap or hover the preview to open the live demo.
+            </p>
+          </div>
+        </div>
 
-            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-              <div className="flex items-end gap-4">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-100/80">
-                    Featured Build
-                  </p>
-                  <h3 className="mt-2 max-w-[15rem] text-[1.65rem] font-black leading-tight text-white sm:max-w-[16rem] sm:text-2xl">
-                    {title}
-                  </h3>
-                  {category ? (
-                    <span className="mt-3 inline-flex rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/90 backdrop-blur">
-                      {category}
-                    </span>
-                  ) : null}
+        <div className="rounded-b-[2rem] border border-slate-200/80 border-t-0 bg-white/82 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm sm:p-5 lg:rounded-r-[2rem] lg:rounded-bl-none lg:border-l-0 lg:border-t lg:p-6">
+          <div className="grid gap-4 lg:grid-rows-[minmax(300px,1fr)_auto]">
+            <div
+              className="group/media relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950/20 shadow-[0_18px_50px_rgba(15,23,42,0.22)]"
+              onClick={handleMediaToggle}
+            >
+              {image && !imageError ? (
+                <>
+                  <img
+                    src={image}
+                    alt={title}
+                    className="h-full min-h-[240px] w-full object-cover object-top transition-transform duration-700 group-hover/media:scale-[1.04] lg:min-h-[300px]"
+                    onError={() => setImageError(true)}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-white/10 opacity-80 transition duration-500 group-hover/media:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.16),transparent_26%)] opacity-0 transition duration-500 group-hover/media:opacity-100" />
+                </>
+              ) : (
+                <PreviewFallback />
+              )}
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5">
+                <div className="max-w-[15rem] rounded-2xl border border-white/10 bg-slate-950/35 px-4 py-3 text-white backdrop-blur-md">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-200/85">Project Preview</p>
+                  <p className="mt-1 text-sm font-semibold text-white/90">{title}</p>
                 </div>
+              </div>
+
+              <div
+                className={`absolute inset-0 flex items-center justify-center bg-slate-950/30 backdrop-blur-[2px] transition duration-300 ${
+                  mobileOverlayVisible ? "opacity-100" : "pointer-events-none opacity-0 md:pointer-events-auto md:opacity-0 md:group-hover/media:opacity-100"
+                }`}
+              >
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/90 px-5 py-3 text-sm font-bold text-slate-950 shadow-[0_18px_40px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
+                >
+                  Live Demo
+                  <span>→</span>
+                </a>
               </div>
             </div>
 
-            <div className={`absolute inset-0 flex items-center justify-center transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileOverlayClass}`}>
-              <ActionButton />
+            <div className="rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:p-5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Tech Stack</p>
+              <div className="mt-4 grid gap-4">
+                <StackGroup title="Frontend" items={frontend} />
+                <StackGroup title="Backend" items={backend} />
+                <StackGroup title="Features" items={features.concat(other)} />
+              </div>
             </div>
-          </div>
-        ) : (
-          <PreviewPanel />
-        )}
-      </div>
-
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <p className="text-sm leading-7 text-slate-600">{description}</p>
-
-        <div className="mt-5 rounded-2xl border border-slate-200/80 bg-white/80 p-4 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">
-            Tech Stack
-          </p>
-          <div className="mt-4 space-y-4">
-            <Group title="Frontend" items={frontend} />
-            <Group title="Backend" items={backend} />
-            <Group title="Features" items={features.concat(other)} />
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
