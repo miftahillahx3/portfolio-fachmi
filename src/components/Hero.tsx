@@ -15,17 +15,17 @@ export default function Hero() {
             Building scalable, integrated web platforms for labs and digital services. Specialized in frontend, backend, database, and API integration.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:gap-4">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-7 sm:flex sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="#projects"
-              className="rounded-2xl bg-blue-600 px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl active:scale-95 sm:px-7 sm:py-4"
+              className="rounded-2xl bg-blue-600 px-4 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl active:scale-95 sm:px-7 sm:py-4"
             >
               Explore Projects
             </a>
 
             <a
               href="#contact"
-              className="rounded-2xl border border-slate-950 bg-slate-950 px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-slate-300 transition-all duration-300 hover:-translate-y-1 hover:border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:px-7 sm:py-4"
+              className="rounded-2xl border border-slate-950 bg-slate-950 px-4 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-slate-300 transition-all duration-300 hover:-translate-y-1 hover:border-blue-600 hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-200 active:scale-95 sm:px-7 sm:py-4"
             >
               Contact Me
             </a>
@@ -41,7 +41,7 @@ export default function Hero() {
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/10" />
               <div className="absolute -left-20 bottom-10 h-40 w-40 rounded-full bg-cyan-400/10" />
 
-              <div className="absolute left-1/2 top-4 z-20 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-slate-950/95 px-4 py-2 text-xs font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10 sm:left-auto sm:right-1 sm:top-5 sm:translate-x-0 sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
+              <div className="absolute left-1/2 top-4 z-20 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-slate-950/95 px-3 py-2 text-[11px] font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.18)] ring-1 ring-white/10 sm:left-auto sm:right-1 sm:top-5 sm:translate-x-0 sm:gap-3 sm:px-5 sm:py-3 sm:text-sm">
                 <span className="inline-flex h-3 w-3 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(74,222,128,0.85)] sm:h-3.5 sm:w-3.5" />
                 <p className="leading-none italic">Open for remote &amp; opportunities</p>
               </div>

@@ -40,11 +40,11 @@ export default function Projects({ active }: ProjectsProps) {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 no-scrollbar sm:-mx-6 sm:px-6 md:mx-0 md:grid md:overflow-visible md:px-0 md:pb-0">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`reveal-card ${visible ? "is-visible" : ""}`}
+              className={`reveal-card w-[88%] max-w-[24rem] shrink-0 snap-start md:w-auto md:max-w-none ${visible ? "is-visible" : ""}`}
               style={{ transitionDelay: `${index * 140}ms` }}
             >
               <ProjectCard {...project} />
