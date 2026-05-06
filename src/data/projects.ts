@@ -1,23 +1,53 @@
+import sireneImage from "../assets/projects/sirene.png";
+import displayLisImage from "../assets/projects/displaylis.png";
+
 export const projects = [
   {
     title: "SIRENE Jabar",
+    category: "Healthcare Platform",
     description:
-      "Sistem Informasi Rujukan & Evaluasi Neonatal Jawa Barat yang terintegrasi dengan alat laboratorium dan digunakan oleh fasilitas kesehatan di kabupaten/kota Jawa Barat.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "API Integration", "Lab Integration"],
+      "An integrated neonatal screening platform used across healthcare facilities in West Java, combining real-time processing and direct laboratory device connectivity for faster, more reliable reporting.",
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "REST API",
+      "PostgreSQL",
+      "Websocket",
+      "Role-based Access Control",
+    ],
     link: "https://sirene.labkesjabar.com/",
+    image: sireneImage,
+  },
+  {
+    title: "Real-time Patient Dashboard",
+    category: "LIS Dashboard",
+    description:
+      "A live operations dashboard for a Laboratory Information System, designed to surface patient queues and examination registrations in real time for lab teams.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "REST API",
+      "Server-sent Events",
+      "Geolocation",
+    ],
+    link: "https://displayinfo.labkesjabar.com/?draft_key=1",
+    image: displayLisImage,
   },
   {
     title: "SIMPEG Labkes Jabar",
+    category: "HR Information System",
     description:
-      "Sistem informasi manajemen kepegawaian untuk mengelola data pegawai, pendidikan, pekerjaan, sertifikasi, dan administrasi SDM secara digital.",
-    tech: ["Web App", "Database", "Authentication", "Employee Management"],
+      "A web-based employee management system for Labkes Jabar that centralizes personnel records, education history, certifications, and internal administrative workflows.",
+    tech: [
+      "PHP",
+      "CodeIgniter",
+      "MySQL",
+      "Authentication System",
+      "Role-based Access Control",
+    ],
     link: "https://simpeglabkes-jabar.com/",
-  },
-  {
-    title: "Display Information System",
-    description:
-      "Dashboard display informasi layanan laboratorium secara real-time, menampilkan data pasien, daftar pemeriksaan, biaya, QR survei, tarif, dan hotline.",
-    tech: ["Dashboard", "Real-time Data", "QR Integration", "Responsive UI"],
-    link: "https://displayinfo.labkesjabar.com/?draft_key=1",
   },
 ];
