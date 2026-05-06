@@ -24,7 +24,7 @@ export default function Contact({ active }: ContactProps) {
               Hire Me
             </p>
 
-            <h2 className="max-w-[11ch] text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
+            <h2 className="max-w-[15ch] text-3xl font-black leading-tight sm:max-w-[11ch] sm:text-4xl md:text-5xl">
               Let&apos;s build something impactful.
             </h2>
 

@@ -126,6 +126,7 @@ export default function ProjectCard({
   image,
 }: ProjectCardProps) {
   const [imageError, setImageError] = React.useState(false);
+  const [mobileActionVisible, setMobileActionVisible] = React.useState(false);
 
   const categoryMap: Record<string, string> = {
     React: "Frontend",
@@ -182,9 +183,20 @@ export default function ProjectCard({
     );
   }
 
+  const handlePreviewToggle = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setMobileActionVisible((current) => !current);
+    }
+  };
+
+  const mobileOverlayClass = mobileActionVisible ? "opacity-100" : "opacity-0 pointer-events-none";
+
   function PreviewPanel() {
     return (
-      <div className="relative flex h-56 w-full flex-col justify-between overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.42),_transparent_42%),linear-gradient(145deg,_#020617,_#0f172a_35%,_#1d4ed8_78%,_#67e8f9)] p-5 text-white sm:h-64 sm:p-6">
+      <div
+        className="relative flex h-56 w-full cursor-pointer flex-col justify-between overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(96,165,250,0.42),_transparent_42%),linear-gradient(145deg,_#020617,_#0f172a_35%,_#1d4ed8_78%,_#67e8f9)] p-5 text-white sm:h-64 sm:cursor-default sm:p-6"
+        onClick={handlePreviewToggle}
+      >
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:26px_26px]" />
         <div className="absolute -right-12 bottom-6 h-28 w-28 rounded-full border border-white/15 bg-white/10 blur-sm" />
 
@@ -213,8 +225,8 @@ export default function ProjectCard({
           </p>
         </div>
 
-        <div className="absolute inset-0 bg-slate-950/15 opacity-0 transition duration-300 group-hover:opacity-100" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-100 transition duration-300 md:opacity-0 md:group-hover:opacity-100">
+        <div className={`absolute inset-0 bg-slate-950/15 transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileActionVisible ? "opacity-100" : "opacity-0"}`} />
+        <div className={`absolute inset-0 flex items-center justify-center transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileOverlayClass}`}>
           <ActionButton />
         </div>
       </div>
@@ -227,7 +239,10 @@ export default function ProjectCard({
 
       <div className="relative overflow-hidden border-b border-slate-200/70 bg-slate-100">
         {image && !imageError ? (
-          <div className="relative h-56 w-full overflow-hidden sm:h-64">
+          <div
+            className="relative h-56 w-full cursor-pointer overflow-hidden sm:h-64 sm:cursor-default"
+            onClick={handlePreviewToggle}
+          >
             <img
               src={image}
               alt={title}
@@ -235,7 +250,7 @@ export default function ProjectCard({
               onError={() => setImageError(true)}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-white/10" />
-            <div className="absolute inset-0 bg-slate-950/15 opacity-0 transition duration-300 group-hover:opacity-100" />
+            <div className={`absolute inset-0 bg-slate-950/15 transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileActionVisible ? "opacity-100" : "opacity-0"}`} />
 
             <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
               <div className="flex items-end gap-4">
@@ -255,7 +270,7 @@ export default function ProjectCard({
               </div>
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-center opacity-100 transition duration-300 md:opacity-0 md:group-hover:opacity-100">
+            <div className={`absolute inset-0 flex items-center justify-center transition duration-300 md:opacity-0 md:group-hover:opacity-100 ${mobileOverlayClass}`}>
               <ActionButton />
             </div>
           </div>
