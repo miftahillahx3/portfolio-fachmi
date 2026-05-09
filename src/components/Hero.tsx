@@ -41,10 +41,10 @@ export default function Hero() {
               Building modern information systems, API integrations, and scalable web applications focused on real operational impact.
             </p>
 
-            <div className="mt-6 grid gap-3 sm:mt-7 sm:flex sm:flex-row sm:flex-wrap sm:gap-4 md:grid-cols-[repeat(3,max-content)]">
+            <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-7 sm:flex sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href="#projects"
-                className="rounded-2xl bg-blue-600 px-4 py-3.5 text-center text-sm font-bold text-white shadow-[0_16px_35px_rgba(59,130,246,0.32)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-[0_22px_40px_rgba(37,99,235,0.32)] active:scale-95 sm:px-7 sm:py-4"
+                className="rounded-2xl bg-blue-600 px-3 py-3 text-center text-xs font-bold text-white shadow-[0_16px_35px_rgba(59,130,246,0.32)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-[0_22px_40px_rgba(37,99,235,0.32)] active:scale-95 sm:px-7 sm:py-4 sm:text-sm"
               >
                 Explore Projects
               </a>
@@ -52,14 +52,14 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setIsCvOpen(true)}
-                className="rounded-2xl border border-slate-300 bg-white/80 px-4 py-3.5 text-center text-sm font-bold text-slate-900 shadow-[0_14px_32px_rgba(148,163,184,0.22)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700 hover:shadow-[0_18px_34px_rgba(251,191,36,0.22)] active:scale-95 sm:px-7 sm:py-4"
+                className="rounded-2xl border border-slate-300 bg-white/80 px-3 py-3 text-center text-xs font-bold text-slate-900 shadow-[0_14px_32px_rgba(148,163,184,0.22)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700 hover:shadow-[0_18px_34px_rgba(251,191,36,0.22)] active:scale-95 sm:px-7 sm:py-4 sm:text-sm"
               >
                 View CV
               </button>
 
               <a
                 href="#contact"
-                className="rounded-2xl border border-slate-950 bg-slate-950 px-4 py-3.5 text-center text-sm font-bold text-white shadow-[0_16px_32px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:bg-emerald-400 hover:text-slate-950 hover:shadow-[0_20px_36px_rgba(74,222,128,0.28)] active:scale-95 sm:px-7 sm:py-4"
+                className="rounded-2xl border border-slate-950 bg-slate-950 px-3 py-3 text-center text-xs font-bold text-white shadow-[0_16px_32px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:bg-emerald-400 hover:text-slate-950 hover:shadow-[0_20px_36px_rgba(74,222,128,0.28)] active:scale-95 sm:px-7 sm:py-4 sm:text-sm"
               >
                 Contact Me
               </a>
