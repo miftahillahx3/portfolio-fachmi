@@ -137,6 +137,7 @@ export default function ProjectCard({
     CodeIgniter: "Backend",
     MySQL: "Backend",
     PostgreSQL: "Backend",
+    "Node.js": "Backend",
     "REST API": "Backend",
     "API Integration": "Backend",
     Websocket: "Features",

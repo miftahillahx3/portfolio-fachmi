@@ -1,5 +1,6 @@
 import sireneImage from "../assets/projects/sirene.png";
 import displayLisImage from "../assets/projects/displaylis.png";
+import simpegImage from "../assets/projects/simpeg.png";
 
 export const projects = [
   {
@@ -12,6 +13,7 @@ export const projects = [
       "React",
       "TypeScript",
       "Tailwind CSS",
+      "Node.js",
       "REST API",
       "PostgreSQL",
       "Websocket",
@@ -30,6 +32,8 @@ export const projects = [
       "TypeScript",
       "Tailwind CSS",
       "REST API",
+      "Node.js",
+      "PostgreSQL",
       "Server-sent Events",
       "Geolocation",
     ],
@@ -48,6 +52,7 @@ export const projects = [
       "Authentication System",
       "Role-based Access Control",
     ],
-    link: "https://simpeglabkes-jabar.com/",
+    link: "https://simpeg.labkesjabar.com/",
+    image: simpegImage,
   },
 ];
